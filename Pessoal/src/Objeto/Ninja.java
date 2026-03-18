@@ -15,7 +15,7 @@ public class Ninja {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
 
     public void jogarKunai () {
         System.out.println("Kunai jogada");
