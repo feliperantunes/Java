@@ -1,6 +1,4 @@
-import java.lang.ref.PhantomReference;
-
-public class operadoresOnarios {
+public class OperadoresOnarios {
     static void main(String[] args) {
         int incremento = 6;
         incremento++;

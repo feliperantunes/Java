@@ -1,4 +1,4 @@
-public class matematica {
+public class OperadoresMatematicos {
     static void main(String[] args) {
         System.out.println(Math.PI);
         System.out.println("Expotenciação: 5² = " + Math.pow(5,2));

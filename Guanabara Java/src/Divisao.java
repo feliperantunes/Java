@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Matematica2 {
+public class Divisao {
     static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Bem vindo divisor!");
