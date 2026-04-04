@@ -1,4 +1,4 @@
-package arrays;
+package atividades;
 
 public class Moda {
      static void main(String[] args) {
