@@ -1,5 +1,7 @@
+package arrays;
+
 public class Moda {
-    public static void main(String[] args) {
+     static void main(String[] args) {
         int [] vetor = {1, 5, 2, 3, 1, 3, 1};
         int moda = 0;
         int quantidadeVezes = 0;
