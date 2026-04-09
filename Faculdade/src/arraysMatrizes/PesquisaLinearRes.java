@@ -1,4 +1,4 @@
-package arrays;
+package arraysMatrizes;
 
 public class PesquisaLinearRes {
     public static int buscaLinear(int[] array, int x) {

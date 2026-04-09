@@ -1,4 +1,4 @@
-package arrays;
+package arraysMatrizes;
 
 public class PesquisaBinariaRes {
     public static int buscaBinaria(int[] array, int x) {

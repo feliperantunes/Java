@@ -1,6 +1,6 @@
-package arrays;
+package arraysMatrizes;
 import java.util.Arrays;
-public class AddDelElementos {
+public class AddDelArray {
     public static void main(String[] args) {
         int[] original = {1, 2, 3};
         System.out.println("Vetor original: " + Arrays.toString(original));
