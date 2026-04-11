@@ -6,14 +6,16 @@ public class Livro {
     private String autorLivro;
     private int anoPublicacao;
     private String categoria;
+    private boolean emprestado;
 
     // Construtor
-    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria){
+    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria, boolean emprestado){
         this.idLivro = idLivro;
         this.tituloLivro = tituloLivro;
         this.autorLivro = autorLivro;
         this.anoPublicacao = anoPublicacao;
         this.categoria = categoria;
+        this.emprestado = emprestado;
     }
 
     // Getters
@@ -35,6 +37,10 @@ public class Livro {
 
     public String getCategoria () {
         return categoria;
+    }
+
+    public boolean getEmprestado () {
+        return emprestado;
     }
 
 }

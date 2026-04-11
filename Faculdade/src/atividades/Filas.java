@@ -24,7 +24,7 @@ class FilaComLista {
     }
 }
 
-class Main {
+class Maain {
     // Método main para testes
     public static void main(String[] args) {
         FilaComLista fila = new FilaComLista();
