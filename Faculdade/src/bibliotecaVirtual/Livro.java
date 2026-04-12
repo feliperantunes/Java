@@ -6,16 +6,16 @@ public class Livro {
     private String autorLivro;
     private int anoPublicacao;
     private String categoria;
-    private boolean emprestado;
+    private Usuario usuarioAtual;
 
     // Construtor
-    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria, boolean emprestado){
+    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria, Usuario usuarioAtual){
         this.idLivro = idLivro;
         this.tituloLivro = tituloLivro;
         this.autorLivro = autorLivro;
         this.anoPublicacao = anoPublicacao;
         this.categoria = categoria;
-        this.emprestado = emprestado;
+        this.usuarioAtual = usuarioAtual;
     }
 
     // Getters
@@ -39,9 +39,19 @@ public class Livro {
         return categoria;
     }
 
-    public boolean getEmprestado () {
-        return emprestado;
+    public Usuario getUsuarioAtual () {
+            return usuarioAtual;
     }
 
+    // Setters
+    public void setUsuarioAtual(Usuario usuarioAtual){
+        this.usuarioAtual = usuarioAtual;
+    }
+
+    public static void emprestaLivro(Livro livro, Usuario usuario) {
+        if (livro.getUsuarioAtual() == null) {
+            livro.setUsuarioAtual(usuario);
+        }
+    }
 }
 

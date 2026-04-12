@@ -5,8 +5,10 @@ import java.util.Queue;
 
 public class ListaEspera {
     static void main(String[] args) {
-        Queue<Livro> filaEspera = new LinkedList<Livro>() {
+        Queue<Livro> filaEspera = new LinkedList<Livro>();
 
-        };
     }
+
+
+
 }
