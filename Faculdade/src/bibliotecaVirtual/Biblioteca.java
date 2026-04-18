@@ -2,6 +2,8 @@ package bibliotecaVirtual;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
+import static bibliotecaVirtual.Livro.devolveLivro;
 import static bibliotecaVirtual.Livro.emprestaLivro;
 
 public class Biblioteca {
@@ -16,6 +18,7 @@ public class Biblioteca {
                     "Frank Herbert",
                     1965,
                     "Ficção Ciêntifica",
+                    null,
                     null
             );
             listaLivros.add(Duna);
@@ -26,6 +29,7 @@ public class Biblioteca {
                     "Bram Stoker",
                     1897,
                     "Ficção Ciêntifica",
+                    null,
                     null
             );
             listaLivros.add(Dracula);
@@ -36,6 +40,7 @@ public class Biblioteca {
                     "William Shakespeare",
                     1600,
                     "Drama",
+                    null,
                     null
             );
             listaLivros.add(Hamlet);
@@ -80,7 +85,7 @@ public class Biblioteca {
         public static void mostrarInventario() {
             for (Livro livro : listaLivros) {
                 String nomeUsuario;
-                if (livro.getUsuarioAtual() == null) {
+                if (livro.getUsuarioAtual() == null || livro.getFilaEspera() == null) {
                     nomeUsuario = "Disponível";
                 } else {
                     nomeUsuario = livro.getUsuarioAtual().getNomeUsuario();
@@ -108,6 +113,9 @@ public class Biblioteca {
         public static void main(String[] args) {
             criaLivros();
             criaUsuario();
+            emprestaLivro(listaLivros.get(1), listaUsuarios.get(0));
+            emprestaLivro(listaLivros.get(0), listaUsuarios.get(1));
+            devolveLivro(listaLivros.get(0), listaUsuarios.get(1));
             emprestaLivro(listaLivros.get(1), listaUsuarios.get(1));
             mostrarInventario();
             //mostraUsuarios();
