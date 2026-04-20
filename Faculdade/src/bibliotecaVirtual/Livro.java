@@ -1,7 +1,11 @@
 package bibliotecaVirtual;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Set;
+
+import static bibliotecaVirtual.Biblioteca.mapa;
 
 public class Livro {
     private int idLivro;
@@ -73,6 +77,18 @@ public class Livro {
                 livro.setUsuarioAtual(null);
             }
         }
+    }
+
+    // MELHORAR
+    public static void addRecomendacao(Livro livroA, Livro livroB) {
+        Set<Livro> recomendacoes = mapa.get(livroA);
+
+        if (recomendacoes == null) {
+            recomendacoes = new HashSet<>();
+        }
+
+        recomendacoes.add(livroB);
+        mapa.put(livroA, recomendacoes);
     }
 
     @Override
