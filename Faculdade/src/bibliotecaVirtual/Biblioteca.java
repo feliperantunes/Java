@@ -1,10 +1,10 @@
 package bibliotecaVirtual;
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 import static bibliotecaVirtual.Livro.devolveLivro;
 import static bibliotecaVirtual.Livro.emprestaLivro;
+import static bibliotecaVirtual.Usuario.visualizaLivro;
 
 public class Biblioteca {
     static LinkedList<Livro> listaLivros = new LinkedList<Livro>();
@@ -82,7 +82,7 @@ public class Biblioteca {
             for (Livro livro : listaLivros) {
                 String nomeUsuario;
                 String filaEspera = livro.getFilaEspera().toString();
-                if (livro.getUsuarioAtual() == null || livro.getFilaEspera() == null) {
+                if (livro.getUsuarioAtual() == null || livro.getFilaEspera().isEmpty()) {
                     nomeUsuario = "Disponível";
                     filaEspera = "Fila vazia";
                 } else {
@@ -102,10 +102,12 @@ public class Biblioteca {
 
         public static void mostraUsuarios() {
             for (Usuario usuario : listaUsuarios) {
-                System.out.printf("Nome do usuário: %s\nEmail usuário: %s\nIdade: %d\n-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\n",
+                String historico = usuario.getHistorico().toString();
+                System.out.printf("Nome do usuário: %s\nEmail usuário: %s\nIdade: %d\nHistórico: %s\n-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\n",
                         usuario.getNomeUsuario(),
                         usuario.getEmailUsuario(),
-                        usuario.getIdade()
+                        usuario.getIdade(),
+                        historico
                 );
             }
         }
@@ -117,8 +119,10 @@ public class Biblioteca {
             emprestaLivro(listaLivros.get(0), listaUsuarios.get(1));
             devolveLivro(listaLivros.get(0), listaUsuarios.get(1));
             emprestaLivro(listaLivros.get(1), listaUsuarios.get(1));
-            mostrarInventario();
-            //mostraUsuarios();
+            visualizaLivro(listaLivros.get(2), listaUsuarios.get(2));
+            visualizaLivro(listaLivros.get(0), listaUsuarios.get(2));
+            //mostrarInventario();
+            mostraUsuarios();
         }
 
 }

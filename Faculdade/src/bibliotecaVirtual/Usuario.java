@@ -1,10 +1,13 @@
 package bibliotecaVirtual;
 
+import java.util.Stack;
+
 public class Usuario {
     private int idUsuario;
     private String nomeUsuario;
     private String emailUsuario;
     private int idade;
+    private Stack<Livro> historico = new Stack<>();
 
     public Usuario (int idUsuario, String nomeUsuario, String emailUsuario, int idade) {
         this.idUsuario = idUsuario;
@@ -28,6 +31,14 @@ public class Usuario {
 
     public  int getIdade(){
         return  idade;
+    }
+
+    public Stack<Livro> getHistorico () {
+        return historico;
+    }
+
+    public static void visualizaLivro (Livro livro, Usuario usuario) {
+        usuario.getHistorico().push(livro);
     }
 
     @Override
