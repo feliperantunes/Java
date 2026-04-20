@@ -9,7 +9,6 @@ import static bibliotecaVirtual.Livro.emprestaLivro;
 public class Biblioteca {
     static LinkedList<Livro> listaLivros = new LinkedList<Livro>();
     static LinkedList<Usuario> listaUsuarios = new LinkedList<Usuario>();
-    Queue<Livro> filaEspera = new LinkedList<Livro>();
 
         public static void criaLivros() {
             Livro Duna = new Livro(
@@ -18,7 +17,6 @@ public class Biblioteca {
                     "Frank Herbert",
                     1965,
                     "Ficção Ciêntifica",
-                    null,
                     null
             );
             listaLivros.add(Duna);
@@ -29,7 +27,6 @@ public class Biblioteca {
                     "Bram Stoker",
                     1897,
                     "Ficção Ciêntifica",
-                    null,
                     null
             );
             listaLivros.add(Dracula);
@@ -40,7 +37,6 @@ public class Biblioteca {
                     "William Shakespeare",
                     1600,
                     "Drama",
-                    null,
                     null
             );
             listaLivros.add(Hamlet);
@@ -85,17 +81,21 @@ public class Biblioteca {
         public static void mostrarInventario() {
             for (Livro livro : listaLivros) {
                 String nomeUsuario;
+                String filaEspera = livro.getFilaEspera().toString();
                 if (livro.getUsuarioAtual() == null || livro.getFilaEspera() == null) {
                     nomeUsuario = "Disponível";
+                    filaEspera = "Fila vazia";
                 } else {
                     nomeUsuario = livro.getUsuarioAtual().getNomeUsuario();
+                    filaEspera = livro.getFilaEspera().toString();
                 }
-                System.out.printf("Título do livro: %s\nAutor do livro: %s\nAno publicação: %d\nCategoria: %s\nUsuário atual: %s\n-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\n",
+                System.out.printf("Título do livro: %s\nAutor do livro: %s\nAno publicação: %d\nCategoria: %s\nUsuário atual: %s\nFila de espera: %s\n-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~\n",
                         livro.getTituloLivro(),
                         livro.getAutorLivro(),
                         livro.getAnoPublicacao(),
                         livro.getCategoria(),
-                        nomeUsuario
+                        nomeUsuario,
+                        filaEspera
                 );
             }
         }

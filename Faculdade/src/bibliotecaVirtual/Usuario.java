@@ -30,4 +30,8 @@ public class Usuario {
         return  idade;
     }
 
+    @Override
+    public String toString() {
+        return getNomeUsuario();
+    }
 }

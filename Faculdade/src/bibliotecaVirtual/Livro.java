@@ -10,17 +10,16 @@ public class Livro {
     private int anoPublicacao;
     private String categoria;
     private Usuario usuarioAtual;
-    private Queue<Usuario> filaEspera;
+    private Queue<Usuario> filaEspera = new LinkedList<>();
 
     // Construtor
-    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria, Usuario usuarioAtual, Queue filaEspera){
+    public Livro (int idLivro, String tituloLivro, String autorLivro, int anoPublicacao, String categoria, Usuario usuarioAtual){
         this.idLivro = idLivro;
         this.tituloLivro = tituloLivro;
         this.autorLivro = autorLivro;
         this.anoPublicacao = anoPublicacao;
         this.categoria = categoria;
         this.usuarioAtual = usuarioAtual;
-        this.filaEspera = filaEspera;
     }
 
     // Getters
@@ -61,13 +60,18 @@ public class Livro {
         if (livro.getUsuarioAtual() == null) {
             livro.setUsuarioAtual(usuario);
         } else {
-            livro.filaEspera.add(usuario);
+            livro.getFilaEspera().add(usuario);
         }
     }
 
     public static void devolveLivro(Livro livro, Usuario usuario) {
         if (livro.getUsuarioAtual() == usuario) {
-            livro.setUsuarioAtual(null);
+            if (!livro.getFilaEspera().isEmpty()) {
+                Usuario proximo = (Usuario) livro.getFilaEspera().poll();
+                livro.setUsuarioAtual(proximo);
+            } else {
+                livro.setUsuarioAtual(null);
+            }
         }
     }
 }
