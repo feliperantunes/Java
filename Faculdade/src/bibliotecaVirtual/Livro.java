@@ -1,10 +1,8 @@
 package bibliotecaVirtual;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
+import static bibliotecaVirtual.Biblioteca.listaLivros;
 import static bibliotecaVirtual.Biblioteca.mapa;
 
 public class Livro {
@@ -27,31 +25,31 @@ public class Livro {
     }
 
     // Getters
-    public int getIdLivro () {
+    public int getIdLivro() {
         return idLivro;
     }
 
-    public String getTituloLivro () {
+    public String getTituloLivro() {
         return tituloLivro;
     }
 
-    public String getAutorLivro () {
+    public String getAutorLivro() {
         return autorLivro;
     }
 
-    public int getAnoPublicacao () {
+    public int getAnoPublicacao() {
         return anoPublicacao;
     }
 
-    public String getCategoria () {
+    public String getCategoria() {
         return categoria;
     }
 
-    public Usuario getUsuarioAtual () {
+    public Usuario getUsuarioAtual() {
             return usuarioAtual;
     }
 
-    public Queue getFilaEspera () {
+    public Queue getFilaEspera() {
         return filaEspera;
     }
 
