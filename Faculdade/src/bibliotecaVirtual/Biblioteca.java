@@ -43,9 +43,9 @@ public class Biblioteca {
     }
 
     // Mostra livro individual de acordo com o id passado (Todas as informações)
-    public static void mostraLivroId (int alvo) {
+    public static void mostraLivroId (int alvos) {
         for (Livro livro : listaLivros) {
-            if (alvo == livro.getIdLivro()) {
+            if (alvos == livro.getIdLivro()) {
                 String nomeUsuario;
                 String filaEspera = livro.getFilaEspera().toString();
                 if (livro.getUsuarioAtual() == null || livro.getFilaEspera().isEmpty()) {
@@ -80,5 +80,3 @@ public class Biblioteca {
     }
 
 }
-/*Ideia 1: Mostrar apenas nome do livro e Id e depois selecionar qual livro quer mostrar com mais detalhes
- */
