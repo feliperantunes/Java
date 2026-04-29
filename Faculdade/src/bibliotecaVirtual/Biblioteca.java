@@ -8,6 +8,7 @@ public class Biblioteca {
     static LinkedList<Livro> listaLivros = new LinkedList<Livro>();
     static LinkedList<Usuario> listaUsuarios = new LinkedList<Usuario>();
     static HashMap<Livro, Set<Livro>> mapa = new HashMap<>();
+    static binaryTree firstTree = new binaryTree();
 
     // MELHROAR
     public static void recomendarLivros(Usuario usuario) {

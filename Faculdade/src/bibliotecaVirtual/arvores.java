@@ -1,14 +1,19 @@
-package atividades;
+package bibliotecaVirtual;
+
+import static bibliotecaVirtual.Biblioteca.*;
+import static bibliotecaVirtual.Livro.*;
+import static bibliotecaVirtual.Livro.addRecomendacao;
+import static bibliotecaVirtual.Usuario.visualizaLivro;
 
 // Objeto nó
 class Node {
-    int nodeValue;
+    Livro livro;
     Node left;;
     Node right;
 
     // Construtor
-    public Node(int value) {
-        this.nodeValue = value;
+    public Node(Livro livro) {
+        this.livro = livro;
         left = null;
         right = null;
     }
@@ -23,20 +28,20 @@ class binaryTree {
     }
 
     // Inserir elementos na arvore
-    public void set (int valueToSet) {
-        root = setRecursiveNode(root, valueToSet);
+    public void set (Livro livro) {
+        root = setRecursiveNode(root, livro);
     }
 
     // Inserir no recursivamente
-    private Node setRecursiveNode (Node currentNode, int valueToSet) {
+    private Node setRecursiveNode (Node currentNode, Livro livro) {
         if (currentNode == null) {
-            return new Node(valueToSet);
+            return new Node(livro);
         }
 
-        if (valueToSet < currentNode.nodeValue) {
-            currentNode.left = setRecursiveNode(currentNode.left, valueToSet);
+        if (livro.getIdLivro() < currentNode.livro.getIdLivro()) {
+            currentNode.left = setRecursiveNode(currentNode.left, livro);
         } else {
-            currentNode.right = setRecursiveNode(currentNode.right, valueToSet);
+            currentNode.right = setRecursiveNode(currentNode.right, livro);
         }
         return currentNode;
     }
@@ -51,11 +56,11 @@ class binaryTree {
             return false;
         }
 
-        if (currentNode.nodeValue == valueToSearch) {
+        if (currentNode.livro.getIdLivro() == valueToSearch) {
             return true;
         }
 
-        return (valueToSearch < currentNode.nodeValue) ?
+        return (valueToSearch < currentNode.livro.getIdLivro()) ?
                 (searchRecursiveValue(currentNode.left, valueToSearch)) : (searchRecursiveValue(currentNode.right, valueToSearch));
     }
 
@@ -69,7 +74,7 @@ class binaryTree {
             return null;
         }
 
-        if (valueToDelete == currentNode.nodeValue) {
+        if (valueToDelete == currentNode.livro.getIdLivro()) {
             if (currentNode.left == null && currentNode.right == null) {
                 return null;
             }
@@ -80,11 +85,11 @@ class binaryTree {
                 return currentNode.left;
             }
 
-            int highValue = searchHightValue (currentNode.left);
-            currentNode.nodeValue = highValue;
-            currentNode.left = delRecursiveNode(currentNode.left, highValue);
-            return  currentNode;
-        } else if (valueToDelete < currentNode.nodeValue) {
+            Livro highValue = searchHightValue(currentNode.left);
+            currentNode.livro = highValue;
+            currentNode.left = delRecursiveNode(currentNode.left, highValue.getIdLivro());
+            return currentNode;
+        } else if (valueToDelete < currentNode.livro.getIdLivro()) {
             currentNode.left = delRecursiveNode(currentNode.left, valueToDelete);
             return currentNode;
         } else {
@@ -92,9 +97,9 @@ class binaryTree {
             return currentNode;
         }
     }
-    private int searchHightValue (Node currentNode) {
+    private Livro searchHightValue(Node currentNode) {
         return (currentNode.right == null) ?
-                (currentNode.nodeValue) : (searchHightValue(currentNode.right));
+                currentNode.livro : searchHightValue(currentNode.right);
     }
 
     public void showTree () {
@@ -108,22 +113,8 @@ class binaryTree {
         if (nTree > 0) {
             System.out.print("     ".repeat(nTree - 1) + "+---");
         }
-        System.out.println(currentNode.nodeValue);
+        System.out.println(currentNode.livro);
         showRecursiveTree(currentNode.left, nTree + 1);
         showRecursiveTree(currentNode.right, nTree + 1);
-    }
-}
-
-public class arvores {
-    static void main(String[] args) {
-       binaryTree firstTree = new binaryTree();
-
-       firstTree.set(5);
-       firstTree.set(6);
-       firstTree.set(1);
-       firstTree.set(0);
-       firstTree.set(7);
-
-       firstTree.showTree();
     }
 }

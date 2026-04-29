@@ -1,5 +1,7 @@
 package bibliotecaVirtual;
 
+import java.util.concurrent.CountDownLatch;
+
 import static bibliotecaVirtual.Biblioteca.*;
 import static bibliotecaVirtual.Livro.*;
 import static bibliotecaVirtual.Livro.addRecomendacao;
@@ -16,6 +18,7 @@ public class Main {
                 "Ficção Ciêntifica",
                 null
         ); listaLivros.add(Duna);
+
 
         Livro Duna2 = new Livro(
                 1,
@@ -98,6 +101,17 @@ public class Main {
                 null
         ); listaLivros.add(ProgramadorPragmatico);
 
+        // Arvore
+        firstTree.set(RetratoDorianGrey);
+        firstTree.set(Duna2);
+        firstTree.set(Hamlet);
+        firstTree.set(CodigoLimpo);
+        firstTree.set(Duna);
+        firstTree.set(OrgulhoPreconceito);
+        firstTree.set(Duna3);
+        firstTree.set(ProgramadorPragmatico);
+        firstTree.set(Dracula);
+        firstTree.set(EntendendoAlgoritmos);
 
         // Recomendações
         addRecomendacao(Duna, Duna2); addRecomendacao(Duna, Duna3);
@@ -177,6 +191,8 @@ public class Main {
         // Mostra livro individual de acordo com o id passado (Todas as informações)
         mostraLivroId(0);
         //mostraUsuarios();
+
+        firstTree.showTree();
     }
 
 }
