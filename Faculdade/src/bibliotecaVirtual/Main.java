@@ -1,5 +1,6 @@
 package bibliotecaVirtual;
 
+import java.util.HashMap;
 import java.util.concurrent.CountDownLatch;
 
 import static bibliotecaVirtual.Biblioteca.*;
@@ -193,6 +194,21 @@ public class Main {
         //mostraUsuarios();
 
         firstTree.showTree();
+
+        HashMap<Livro, Integer> resultado0 = dijkstraSimples(mapa, listaLivros.get(0));
+        HashMap<Livro, Integer> resultado1 = dijkstraSimples(mapa, listaLivros.get(1));
+        HashMap<Livro, Integer> resultado2 = dijkstraSimples(mapa, listaLivros.get(3));
+
+        for (HashMap.Entry<Livro, Integer> entry : resultado0.entrySet()) {
+            System.out.println(entry.getKey().getTituloLivro() + " -> Distância: " + entry.getValue());
+        }
+        for (HashMap.Entry<Livro, Integer> entry : resultado1.entrySet()) {
+            System.out.println(entry.getKey().getTituloLivro() + " -> Distância: " + entry.getValue());
+        }
+        for (HashMap.Entry<Livro, Integer> entry : resultado2.entrySet()) {
+            System.out.println(entry.getKey().getTituloLivro() + " -> Distância: " + entry.getValue());
+        }
+
     }
 
 }

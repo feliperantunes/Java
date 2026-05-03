@@ -1,8 +1,6 @@
 package bibliotecaVirtual;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class Biblioteca {
     static LinkedList<Livro> listaLivros = new LinkedList<Livro>();
@@ -78,6 +76,29 @@ public class Biblioteca {
                     historico
             );
         }
+    }
+
+    public static HashMap<Livro, Integer> dijkstraSimples(HashMap<Livro, Set<Livro>> grafo, Livro origem) {
+
+        HashMap<Livro, Integer> distancias = new HashMap<>();
+        Queue<Livro> fila = new LinkedList<>();
+
+        distancias.put(origem, 0);
+        fila.add(origem);
+
+        while (!fila.isEmpty()) {
+            Livro atual = fila.poll();
+            int distanciaAtual = distancias.get(atual);
+
+            for (Livro vizinho : grafo.getOrDefault(atual, new HashSet<>())) {
+                if (!distancias.containsKey(vizinho)) {
+                    distancias.put(vizinho, distanciaAtual + 1);
+                    fila.add(vizinho);
+                }
+            }
+        }
+
+        return distancias;
     }
 
 }
